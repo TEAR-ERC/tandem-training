@@ -38,11 +38,19 @@ Hands-on tutorial materials for the [2026 SCEC Tandem Training Workshop](https:/
 │           ├── gf_vec.bin
 │           └── gf_facet_labels.bin
 │
-└── depthVarying/              # BP3 extension — depth-varying elastic properties
-    ├── bp3.geo                # Gmsh geometry script (same as uniform/)
-    ├── bp3.lua                # Lua library: exponential Vs profile (1.2→4.0 km/s) and ρ
-    ├── bp3.toml               # Tandem config (QDGreen, dip=30° reverse, 550 yr run)
-    └── petsc_config.cfg       # PETSc solver settings
+├── depthVarying/              # BP3 extension — depth-varying elastic properties
+│   ├── bp3.geo                # Gmsh geometry script (same as uniform/)
+│   ├── bp3.lua                # Lua library: exponential Vs profile (1.2→4.0 km/s) and ρ
+│   ├── bp3.toml               # Tandem config (QDGreen, dip=30° reverse, 550 yr run)
+│   └── petsc_config.cfg       # PETSc solver settings
+│
+└── meshing_tutorial/          # Session C: Gmsh meshing tutorial
+    └── bp3_mesh/
+        ├── bp3.geo            # Gmsh geometry script for BP3 mesh
+        ├── bp3_python.ipynb   # Jupyter notebook — Gmsh Python API workflow
+        ├── cascadia_profile.npz  # Cascadia subduction zone profile data
+        ├── domainOutput.py    # Helper script for domain output
+        └── gmsh_sc.png        # Screenshot of Gmsh mesh
 ```
 
 ---
