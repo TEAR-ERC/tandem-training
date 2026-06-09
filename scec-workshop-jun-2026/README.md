@@ -63,4 +63,4 @@ Hands-on tutorial materials for the [2026 SCEC Tandem Training Workshop](https:/
 - **Location:** Scripps Institution of Oceanography, La Jolla, California
 - **Website:** https://www.scec.org/events/2026-tandem-training-workshop/
 - **Organizers:** Bar Oryan, Yohai Magen, Alice Gabriel, Jeena Yun, Dave May (UC San Diego)
-- **Funded by:** SCEC (Southern California Earthquake Center)
+- **Funded by:** Statewide California Earthquake Center (SCEC)
