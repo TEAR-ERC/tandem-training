@@ -7,9 +7,23 @@ type = "elasticity"             # Type of problem: [poisson | elastic/elasticity
 ref_normal = [1, 0]             # Reference normal vector.
 boundary_linear = true          # Assert that boundary is a linear function of time (i.e. boundary(x, t) = f(x) t). Default = False.
 
-gf_checkpoint_prefix = "gf/"    # Path to pre-computed Green's function; If you are using Tandem on Qworx it will be overridden by Qworx
+# Green's function checkpointing
+[gf_checkpoint]
+prefix = "gf/"    # Path to write or load pre-computed Green's function; If you are using Tandem on Qworx it will be overridden by Qworx
 
-# On-fault probe outputs
+# Time step checkpointing
+[ts_checkpoint]
+storage_type = "unlimited"      # Store unlimited amount of checkpoints
+freq_step = 10000               # Checkpoint every 10000 time steps
+freq_cputime = 60               # Checkpoint every 60 minutes in CPU time
+freq_physical_time = 315360000  # Checkpoint every 10 yrs in simulation
+save_directory = "checkpoint"   # Path to write checkpoints
+
+# Volume outputs
+[domain_output]
+prefix = "output/domain"
+
+# On-fault probe outputs (in CSV format)
 [fault_probe_output]
 prefix = "outputs/fltst_"
 t_max = 9460800
@@ -98,10 +112,6 @@ probes = [
 # [fault_output]
 # prefix = "output/fault"
 # t_max = 9460800
-
-## Domain outputs
-# [domain_output]
-# prefix = "output/domain"
 
 # Domain probe outputs
 # [domain_probe_output]
