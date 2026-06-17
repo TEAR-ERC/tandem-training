@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<VTKFile type="PUnstructuredGrid" version="1.0" header_type="UInt64" byte_order="LittleEndian" compressor="vtkZLibDataCompressor">
+    <PUnstructuredGrid GhostLevel="0">
+        <PPoints>
+            <PDataArray type="Float64" Name="Points" NumberOfComponents="3"/>
+        </PPoints>
+        <PCells>
+            <PDataArray type="Int32" Name="connectivity" NumberOfComponents="1"/>
+            <PDataArray type="Int32" Name="offsets" NumberOfComponents="1"/>
+            <PDataArray type="UInt8" Name="types" NumberOfComponents="1"/>
+        </PCells>
+        <PCellData>
+            <PDataArray type="Int32" Name="partition" NumberOfComponents="1"/>
+            <PDataArray type="Int32" Name="bc" NumberOfComponents="1"/>
+        </PCellData>
+        <Piece Source="3d_bc_0.vtu"/>
+    </PUnstructuredGrid>
+</VTKFile>
