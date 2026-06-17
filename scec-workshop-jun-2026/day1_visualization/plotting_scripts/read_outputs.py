@@ -411,9 +411,9 @@ class OUTPUTS:
         --------
         None
         """
-        import myplots
-        mp = myplots.Figpref()
-        options = mp.default_options.copy()
+        import plot_utils
+        p_utils = plot_utils.Figpref()
+        options = p_utils.default_options.copy()
         options.update(kwargs)
         create_fig = False
         peak_mode = False
@@ -450,7 +450,7 @@ class OUTPUTS:
         del options['ax']
 
         # --- Set x-axis scale and x-label
-        time, options['xlab'] = mp.set_time(self.time, options['plot_in_sec'])
+        time, options['xlab'] = p_utils.set_time(self.time, options['plot_in_sec'])
 
         # --- 
         if options['target_loc'] is not None:
@@ -486,11 +486,11 @@ class OUTPUTS:
         # --- Plot the time series
         if target_var == 'displacements':
             options['fig_title'] = 'At (%1.1f km, %1.1f km)'%(options['target_loc'][0], options['target_loc'][1])
-            ax = mp.timeseries(ax, time, self.u0[indx, :], **options)
+            ax = p_utils.timeseries(ax, time, self.u0[indx, :], **options)
             ax.set_xlabel('')
-            ax2 = mp.timeseries(ax2, time, self.u1[indx, :], **options)
+            ax2 = p_utils.timeseries(ax2, time, self.u1[indx, :], **options)
         else:
-            ax = mp.plot_timeserise(ax, time, var, **options)
+            ax = p_utils.plot_timeserise(ax, time, var, **options)
         if create_fig: 
             plt.tight_layout()
             if options['save_on']:

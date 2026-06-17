@@ -2,8 +2,8 @@ import meshio
 import matplotlib.pyplot as plt
 import numpy as np
 '''
-Originally written by Bar Oryan
-Modified by Jeena Yun
+Read, process, and plot Gmsh mesh file used for Tandem simulation
+Modified by Bar Oryan and Jeena Yun
 Last modification: 2026.01.14.
 '''
 
@@ -93,8 +93,8 @@ class GmshMesh2D:
         if self.mesh is None:
             raise ValueError("Mesh not loaded. Call read_mesh() first.")
         if ax is None:
-            import myplots
-            mp = myplots.Figpref()
+            import plot_utils
+            p_utils = plot_utils.Figpref()
             plt.rcParams['font.size'] = '11'
             fig, ax = plt.subplots(figsize=(10, 5))
 
@@ -117,13 +117,13 @@ class GmshMesh2D:
             # label = self.phys_id_to_name.get(phys, f"Physical {phys}")
             # color = cmap(i % 10)
             if phys == 1:
-                color = mp.myblue
+                color = p_utils.myblue
                 label = 'Free surface'
             elif phys == 3:
                 color = 'k'
                 label = 'Fault (rate-and-state friction)'
             elif phys == 5:
-                color = mp.mypink
+                color = p_utils.mypink
                 label = 'Dirichlet'
             for j, seg in enumerate(segs):
                 pts = self.mesh.points[seg, :2]

@@ -8,8 +8,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import cmcrameri.cm as cram
-import myplots
-mp = myplots.Figpref()
 
 yr2sec = 365*24*60*60
 mymint = (70/255, 225/255, 165/255)
@@ -411,16 +409,16 @@ def plot_image(X, Y, var, outputs, event_info, options):
     cmap_n, cb_label = gen_cmap(options)
 
     if options['target_variable'] == 'sliprate':
-        cb = plt.pcolormesh(X, Y, var, cmap=cmap_n, norm=mpl.colors.LogNorm(options['vmin'], options['vmax']))
+        cb = plt.pcolormesh(X, Y, var, cmap=cmap_n, norm=mpl.colors.LogNorm(options['vmin'], options['vmax']), rasterized=True)
         acolor = 'w'
     elif options['target_variable'] == 'shearT': # ---- Total stress
-        cb = plt.pcolormesh(X, Y, var, cmap=cmap_n, vmin= options['vmin'], vmax= options['vmax'])
+        cb = plt.pcolormesh(X, Y, var, cmap=cmap_n, vmin= options['vmin'], vmax= options['vmax'], rasterized=True)
         acolor = 'k'
     elif 'd' in options['target_variable']:      # ---- Stress change
-        cb = plt.pcolormesh(X, Y, var, cmap=cmap_n, vmin= options['vmin'], vmax= options['vmax'])
+        cb = plt.pcolormesh(X, Y, var, cmap=cmap_n, vmin= options['vmin'], vmax= options['vmax'], rasterized=True)
         acolor = 'k'
     else:
-        cb = plt.pcolormesh(X, Y, var, cmap=cmap_n, vmin= options['vmin'], vmax= options['vmax'])
+        cb = plt.pcolormesh(X, Y, var, cmap=cmap_n, vmin= options['vmin'], vmax= options['vmax'], rasterized=True)
         acolor = 'w'
 
     plt.colorbar(cb, extend='both').set_label(cb_label, fontsize=options['fs_label'], rotation=270, labelpad=30) # vertical colorbar

@@ -26,7 +26,8 @@ Hands-on tutorial materials for the [2026 SCEC Tandem Training Workshop](https:/
 │   └── bp3_QDGreen_2.toml     # Step 3 – QDGreen: load pre-computed GFs
 │
 ├── day1_visualization/        # Session B: post-processing and visualization notebook
-│   ├── plot_tandem_results.ipynb   # Jupyter notebook — Session B probe outputs workflow
+│   ├── plot_tandem_results.ipynb      # Jupyter notebook — Session B probe outputs workflow
+│   ├── required_python_packages.txt   # Requied python packages to run plot_tandem_results.ipynb
 │   └── plotting_scripts/      # Python scripts for post-processing and visualization
 │       ├── cumslip_compute.py # Functions to compute cumulative slip for a given time interval
 │       ├── cumslip_plot.py    # Plot the cumulative slip output computed from cumslip_compute.py
