@@ -1,6 +1,6 @@
 # SCEC Tandem Training Workshop — June 2026
 
-Hands-on tutorial materials for the [2026 SCEC Tandem Training Workshop](https://www.scec.org/events/2026-tandem-training-workshop/), held at the Scripps Institution of Oceanography, La Jolla, California, June 22–24 2026.
+Hands-on tutorial materials for the [2026 SCEC Tandem Training Workshop](https://www.scec.org/events/2026-tandem-training-workshop/), held at the Scripps Institution of Oceanography, La Jolla, California, June 22–24, 2026.
 
 ---
 
@@ -24,6 +24,18 @@ Hands-on tutorial materials for the [2026 SCEC Tandem Training Workshop](https:/
 │   ├── bp3_QD.toml            # Step 1 – plain quasi-dynamic run (no pre-computed GFs)
 │   ├── bp3_QDGreen_1.toml     # Step 2 – QDGreen: compute and checkpoint GFs
 │   └── bp3_QDGreen_2.toml     # Step 3 – QDGreen: load pre-computed GFs
+│
+├── day1_visualization/        # Session B: post-processing and visualization notebook
+│   ├── plot_tandem_results.ipynb   # Jupyter notebook — Session B probe outputs workflow
+│   └── plotting_scripts/      # Python scripts for post-processing and visualization
+│       ├── cumslip_compute.py # Functions to compute cumulative slip for a given time interval
+│       ├── cumslip_plot.py    # Plot the cumulative slip output computed from cumslip_compute.py
+│       ├── event_analyze.py   # Functions to automatically classify earthquake events from continuous Tandem outputs
+│       ├── faultoutputs_image.py  # Plot spatio-temporal evolution of on-fault variables
+│       ├── plot_utils.py      # Commonly used utilities for plotting scripts
+│       ├── read_mesh.py       # Read, process, and plot Gmsh mesh file
+│       ├── read_outputs.py    # Read and process raw Tandem outputs
+│       └── select_widget.py   # Tools to support widget features in the plot_tandem_results.ipynb
 │
 ├── uniform/                   # BP3 reference setup — uniform elastic properties
 │   ├── bp3.geo                # Gmsh geometry script (adjustable dip, fault/surface resolution)
@@ -52,8 +64,6 @@ Hands-on tutorial materials for the [2026 SCEC Tandem Training Workshop](https:/
         ├── domainOutput.py    # Helper script for domain output
         └── gmsh_sc.png        # Screenshot of Gmsh mesh
 ```
-
----
 
 ---
 
