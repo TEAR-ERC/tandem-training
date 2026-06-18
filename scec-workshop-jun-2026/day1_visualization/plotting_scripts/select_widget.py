@@ -31,9 +31,9 @@ def select_output_dir(base_dir_str=None):
         base_dir = Path(base_dir_str) 
     else:
         # If not defined, use default base directory
-        base_dir = Path("../")
+        base_dir = Path(".")
 
-    default_job_name = 'depthVarying'
+    default_job_name = 'depthVarying_outputs'
     # Gather job names
     job_names = sorted(
         [d.name for d in base_dir.iterdir() if d.is_dir()]
