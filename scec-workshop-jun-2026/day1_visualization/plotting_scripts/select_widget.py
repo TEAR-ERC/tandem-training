@@ -31,15 +31,18 @@ def select_output_dir(base_dir_str=None):
         base_dir = Path(base_dir_str) 
     else:
         # If not defined, use default base directory
-        base_dir = Path(".")
+        base_dir = Path("../")
 
-    default_job_name = 'example_outputs'
+    default_job_name = 'depthVarying'
     # Gather job names
     job_names = sorted(
         [d.name for d in base_dir.iterdir() if d.is_dir()]
     )
-    if base_dir_str is not None:
-        job_names.insert(0, default_job_name)
+    # Make default job name to be the first option
+    if default_job_name in job_names:
+        job_names.remove(default_job_name)
+
+    job_names.insert(0, default_job_name)
 
     # Do not show pycache for cleaness
     unwanted_keys = ['__pycache__', '.ipynb_checkpoints', '.vscode']
@@ -56,23 +59,18 @@ def select_output_dir(base_dir_str=None):
     )
 
     state = {
-        "full_path": Path(".") / default_job_name,
+        "full_path": base_dir / default_job_name,
         "job_name" : default_job_name,
     }
 
-    info_label = Label(f"Selected job name: {state['job_name']}")
+    info_label = Label(f"Selected job name: {state['job_name']} (default)")
 
     def on_change(change):
         if change["name"] == "value" and change["new"] is not None:
             job_name = change["new"]
 
             state["job_name"] = job_name
-
-            if job_name == default_job_name:
-                print('here')
-                state["full_path"] = Path(".") / job_name
-            else:
-                state["full_path"] = base_dir / job_name
+            state["full_path"] = base_dir / job_name
 
             info_label.value = f"Selected job name: {state['job_name']}"
 
@@ -234,6 +232,8 @@ def select_mesh(save_dir):
 
     if len(mesh_path) > 1:
         raise NameError(f'More than one mesh file (*.msh) found in {str(save_dir)}')
+    elif len(mesh_path) == 0:
+        raise ValueError(f'No mesh file (*.msh) found in {str(save_dir)}')
     
     print(f"Mesh file: {mesh_path[0].split('/')[-1]}")
     return mesh_path[0]
@@ -256,6 +256,8 @@ def select_lua_scenario(save_dir):
 
     if len(toml_path) > 1:
         raise NameError(f'More than one parameter file (*.toml) found in {str(save_dir)}')
+    elif len(toml_path) == 0:
+        raise ValueError(f'No parameter file (*.toml) found in {str(save_dir)}')
 
     print(f"Parameter file: {toml_path[0].split('/')[-1]}")
     with open(toml_path[0], 'r') as fid:
